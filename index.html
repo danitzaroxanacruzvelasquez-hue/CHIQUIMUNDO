@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    name="description"
+    content="Juegos educativos de vocales, objetos y animales para niños de 3 a 5 años."
+  >
+  <title>Mundo de Aventuras - Juegos educativos</title>
+
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link
+    href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&display=swap)"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+  <div class="decoracion nube nube-1" aria-hidden="true">☁️</div>
+  <div class="decoracion nube nube-2" aria-hidden="true">☁️</div>
+  <div class="decoracion estrella estrella-1" aria-hidden="true">⭐</div>
+  <div class="decoracion estrella estrella-2" aria-hidden="true">✨</div>
+
+  <header class="encabezado">
+    <button
+      class="logo"
+      id="botonLogo"
+      type="button"
+      aria-label="Volver al inicio"
+    >
+      <span class="logo-icono">🌈</span>
+      <span>
+        <strong>Mundo de Aventuras</strong>
+        <small>Jugamos y aprendemos</small>
+      </span>
+    </button>
+
+    <div class="barra-superior">
+      <div class="contador-superior">
+        <span>⭐</span>
+        <strong id="estrellasTotales">0</strong>
+        <small>estrellas</small>
+      </div>
+
+      <button
+        id="botonSonido"
+        class="boton-icono"
+        type="button"
+        aria-label="Activar o desactivar sonido"
+        title="Activar o desactivar sonido"
+      >
+        🔊
+      </button>
+    </div>
+  </header>
+
+  <main class="contenedor-principal">
+    <!-- PANTALLA DE INICIO -->
+    <section id="pantallaInicio" class="pantalla activa">
+      <div class="heroe">
+        <div class="mascota" aria-hidden="true">
+          <span class="mascota-oreja izquierda"></span>
+          <span class="mascota-oreja derecha"></span>
+          <div class="mascota-cara">
+            <span class="ojo"></span>
+            <span class="ojo"></span>
+            <span class="nariz">●</span>
+            <span class="sonrisa"></span>
+          </div>
+        </div>
+
+        <div class="heroe-texto">
+          <span class="etiqueta">Para pequeños exploradores de 3 a 5 años</span>
+          <h1>¡Hola! ¿Qué quieres aprender hoy?</h1>
+          <p>
+            Escucha, observa y juega mientras descubres las vocales,
+            los objetos y los animales.
+          </p>
+        </div>
+      </div>
+
+      <div class="menu-juegos">
+        <article class="tarjeta-juego tarjeta-vocales">
+          <div class="tarjeta-icono">🔊</div>
+          <span class="numero-juego">Juego 1</span>
+          <h2>Las vocales</h2>
+          <p>Escucha el sonido y encuentra la vocal correcta.</p>
+          <div class="mini-vocales">
+            <span>A</span>
+            <span>E</span>
+            <span>I</span>
+            <span>O</span>
+            <span>U</span>
+          </div>
+          <button
+            class="boton-principal"
+            type="button"
+            data-juego="vocales"
+          >
+            Jugar ahora <span>▶</span>
+          </button>
+        </article>
+
+        <article class="tarjeta-juego tarjeta-imagenes">
+          <div class="tarjeta-icono">🖼️</div>
+          <span class="numero-juego">Juego 2</span>
+          <h2>Objetos y animales</h2>
+          <p>Mira las imágenes y encuentra lo que se te pide.</p>
+          <div class="mini-imagenes" aria-hidden="true">
+            <span>🐱</span>
+            <span>🏠</span>
+            <span>🐘</span>
+            <span>📺</span>
+          </div>
+          <button
+            class="boton-principal"
+            type="button"
+            data-juego="imagenes"
+          >
+            Jugar ahora <span>▶</span>
+          </button>
+        </article>
+
+        <article class="tarjeta-juego tarjeta-evaluacion">
+          <div class="tarjeta-icono">🏆</div>
+          <span class="numero-juego">Desafío final</span>
+          <h2>Gran aventura</h2>
+          <p>Mezcla vocales, objetos y animales para demostrar lo aprendido.</p>
+          <div class="mini-medallas" aria-hidden="true">
+            <span>⭐</span>
+            <span>🏅</span>
+            <span>🎉</span>
+          </div>
+          <button
+            class="boton-principal"
+            type="button"
+            data-juego="evaluacion"
+          >
+            Comenzar desafío <span>🚀</span>
+          </button>
+        </article>
+      </div>
+
+      <div class="consejo">
+        <span>💡</span>
+        <p>
+          <strong>Consejo para adultos:</strong>
+          acompaña al niño y anímalo a repetir en voz alta cada palabra.
+        </p>
+      </div>
+    </section>
+
+    <!-- PANTALLA DEL JUEGO -->
+    <section id="pantallaJuego" class="pantalla">
+      <div class="cabecera-juego">
+        <button id="botonVolver" class="boton-volver" type="button">
+          ← Inicio
+        </button>
+
+        <div class="progreso-contenedor">
+          <div class="progreso-datos">
+            <span id="tituloJuego">Juego</span>
+            <strong>
+              <span id="preguntaActual">1</span>/<span id="totalPreguntas">10</span>
+            </strong>
+          </div>
+          <div
+            class="barra-progreso"
+            role="progressbar"
+            aria-label="Progreso del juego"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+          >
+            <div id="rellenoProgreso"></div>
+          </div>
+        </div>
+
+        <div class="puntaje-juego">
+          <span>⭐</span>
+          <strong id="puntajeActual">0</strong>
+        </div>
+      </div>
+
+      <div class="panel-juego">
+        <div id="distintivoTipo" class="distintivo-tipo">
+          Escucha con atención
+        </div>
+
+        <h2 id="instruccionJuego">¿Qué vocal escuchas?</h2>
+        <p id="ayudaJuego">
+          Presiona el botón para escuchar y elige una respuesta.
+        </p>
+
+        <button
+          id="botonEscuchar"
+          class="boton-escuchar"
+          type="button"
+          aria-label="Escuchar pregunta"
+        >
+          <span class="ondas" aria-hidden="true">
+            <i></i><i></i><i></i><i></i>
+          </span>
+          <span id="textoEscuchar">Escuchar otra vez</span>
+          <span class="altavoz">🔊</span>
+        </button>
+
+        <div
+          id="opcionesJuego"
+          class="opciones-juego"
+          aria-live="polite"
+        ></div>
+
+        <div
+          id="mensajeRespuesta"
+          class="mensaje-respuesta"
+          role="status"
+          aria-live="assertive"
+        ></div>
+      </div>
+    </section>
+
+    <!-- PANTALLA DE RESULTADOS -->
+    <section id="pantallaResultado" class="pantalla">
+      <div id="confeti" class="confeti" aria-hidden="true"></div>
+
+      <div class="resultado-tarjeta">
+        <div id="medallaResultado" class="medalla-resultado">🏆</div>
+        <span class="etiqueta">Aventura completada</span>
+        <h2 id="tituloResultado">¡Excelente trabajo!</h2>
+        <p id="mensajeResultado">
+          Has terminado el juego.
+        </p>
+
+        <div class="resultado-numeros">
+          <div>
+            <span>⭐</span>
+            <strong id="resultadoAciertos">0</strong>
+            <small>Aciertos</small>
+          </div>
+          <div>
+            <span>🎯</span>
+            <strong id="resultadoPorcentaje">0%</strong>
+            <small>Resultado</small>
+          </div>
+          <div>
+            <span>💫</span>
+            <strong id="resultadoEstrellas">0</strong>
+            <small>Estrellas</small>
+          </div>
+        </div>
+
+        <div class="botones-resultado">
+          <button id="botonRepetir" class="boton-principal" type="button">
+            Jugar otra vez 🔄
+          </button>
+          <button id="botonInicioResultado" class="boton-secundario" type="button">
+            Elegir otro juego
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Desarrollado: Danitza roxana cruz velasquez 🌟</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
